@@ -1,7 +1,4 @@
 #!/bin/bash
-# Just a basic cifs server to test local services
-# Do not use it for production
-
 
 function install_packages {
         yum install samba samba-client -y
@@ -35,4 +32,4 @@ echo -e "[bckp_storage]\n\tcomment = Folder for storing backups\n\tread only = n
 (echo abcd; echo abcd) | smbpasswd -a samba_user1
 pdbedit -Lv
 systemctl start smb
-smbclient -L //localhost -U samba_user1
+(echo abcd) | smbclient -L //localhost -U samba_user1
