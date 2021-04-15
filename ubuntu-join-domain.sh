@@ -8,10 +8,10 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-DNS1="10.0.33.4"                        # required variable
+DNS1="x.x.x.x"                          # required variable
 DNS2=""                                 # optional variable
-DOMAIN="LOWELLCLOUD.LOCAL"              # required variable
-DOMAINADMIN="dkiel"                     # required variable
+DOMAIN="xxxxxxxxxxxxxx.xx"              # required variable
+DOMAINADMIN="xxxxx"                     # required variable
 AD_USER_SUDOERS="user01"				# optional variable: user to add to sudoers
 AD_GROUP_SUDOERS="Admins"				# optional variable: group to add to sudoers
 
