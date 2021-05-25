@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# alias
+# alias getinfo='echo "" >vminfo; vim vminfo; ./getinfo.sh vminfo'
+
 propertiesfile=$1
 echo "VM properties file: ${propertiesfile}"
 echo "-------"
