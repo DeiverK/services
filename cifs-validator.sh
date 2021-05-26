@@ -37,7 +37,7 @@ function credentials_validation {
 function test_mount {
     echo "Taking some time to capture the network traffic will the mount command runs"
     echo "TCP and mount commands" >> ${log_file}
-    timeout 20 tcpdump -nn -vvv -i eth0 port not '(22 or 80 or 443)' and dst not 168.63.129.16 and src not 168.63.129.16 -w ${tcpdump_cap} &
+    timeout 40 tcpdump -nn -vvv -i eth0 port not '(22 or 80 or 443)' and dst not 168.63.129.16 and src not 168.63.129.16 -w ${tcpdump_cap} &
     strace ${command} 2>> ${log_file} >> ${log_file}
     echo "-----------------------------------------------------------" >> ${log_file}
     wait
