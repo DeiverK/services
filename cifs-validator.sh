@@ -1,6 +1,7 @@
 #!/bin/bash
-# Example
-# mount -t cifs //mystorageaccountxxxxx.file.core.windows.net/aksshare1 /home/xxxxxxx/aksshare1 -o vers=3.0,credentials=/etc/smbcredentials/mystorageaccountxxxxx.cred,dir_mode=0777,file_mode=0777,serverino
+# Script to validate requirements for CIFS and network activity while mounting the filesyste,
+# Usage:
+#   cifs-validator.sh "mount -t cifs //mystorageaccountxxxxx.file.core.windows.net/aksshare1 /home/xxxxxxx/aksshare1 -o vers=3.0,credentials=/etc/smbcredentials/mystorageaccountxxxxx.cred,dir_mode=0777,file_mode=0777,serverino"
 
 SECONDS=0
 date=$(date +%d%m%Y-%H%M)
