@@ -1,0 +1,18 @@
+Downgrade Linux Kernel version 
+
+
+apt install linux-image-5.4.0-1055-azure linux-modules-5.4.0-1055-azure linux-modules-extra-5.4.0-1055-azure linux-cloud-tools-5.4.0-1055-azure linux-headers-5.4.0-1055-azure linux-tools-5.4.0-1055-azure
+cp /etc/default/grub /etc/default/grub.ori-$(date +%d%m%Y)
+[[ $(grep "#GRUB_DEFAULT=0" /etc/default/grub) ]] || sed -i 's/GRUB_DEFAULT=0/#GRUB_DEFAULT=0/' /etc/default/grub
+NEW_KERNEL="$(grep submenu /boot/grub/grub.cfg | cut -d ' ' -f 7)>$(grep gnulinux /boot/grub/grub.cfg | grep gnulinux-5.4.0-1055-azure-advanced | cut -d ' ' -f 15)"
+NEW_KERNEL=$(echo ${NEW_KERNEL} | tr -d \'\" | sed -r '/^\s*$/d' | tr -d '[:space:]')
+[[ $(grep "GRUB_DEFAULT=${NEW_KERNEL}" /etc/default/grub) ]] ||  sed -i "/#GRUB_DEFAULT=0/a GRUB_DEFAULT=\"${NEW_KERNEL}\"" /etc/default/grub
+update-grub
+
+systemctl reboot
+After login
+uname -a
+
+sed -i '/^GRUB_DEFAULT/d' /etc/default/grub
+[[ $(grep "#GRUB_DEFAULT=0" /etc/default/grub) ]] && sed -i 's/#GRUB_DEFAULT=0/GRUB_DEFAULT=0/' /etc/default/grub
+[[ $(grep "GRUB_DEFAULT=0" /etc/default/grub) ]] || sed -i "/GRUB_TIMEOUT_STYLE=hidden/i GRUB_DEFAULT=0" /etc/default/grub
